@@ -1,7 +1,7 @@
 // Run with Node.js and Playwright. PLAYWRIGHT_MODULE and BROWSER_PATH are optional local overrides.
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
 const fs=require('node:fs'),path=require('node:path'),{pathToFileURL}=require('node:url');
-const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'.tmp','exam-only-qa');
+const ROOT=path.resolve(__dirname,'..'),OUT=path.join(ROOT,'.tmp','mobile-qa');
 fs.mkdirSync(OUT,{recursive:true});
 const checks=[];
 function check(ok,name){checks.push({ok,name});console.log((ok?'PASS ':'FAIL ')+name);if(!ok)throw Error(name);}
@@ -11,9 +11,7 @@ function check(ok,name){checks.push({ok,name});console.log((ok?'PASS ':'FAIL ')+
   const context=await browser.newContext({viewport:{width:390,height:844},isMobile:true,hasTouch:true,deviceScaleFactor:2,acceptDownloads:true,reducedMotion:'reduce'});
   await context.setOffline(true);const page=await context.newPage();const errors=[],requests=[];
   page.on('pageerror',e=>errors.push(e.message));page.on('request',r=>{if(/^https?:/.test(r.url()))requests.push(r.url());});
-  await page.goto(pathToFileURL(path.join(ROOT,'index.html')).href);await page.waitForFunction(()=>globalThis.PghExamMaker?.ready);
-  check(await page.locator('a[href*="QuestionBank"]').count()===0,'no question-bank link');
-  check(!/self-study/i.test(await page.locator('body').innerText()),'no self-study entry point');
+  await page.goto(pathToFileURL(path.join(ROOT,'exam-maker.html')).href);await page.waitForFunction(()=>globalThis.PghExamMaker?.ready);
   check(await page.locator('#mobileGenerate').count()===1,'mobile action button exists');
   check(await page.locator('#mobileGenerate').isVisible(),'mobile action button is visible at page start');
   check(await page.locator('#difficulty').evaluate(e=>parseFloat(getComputedStyle(e).fontSize)>=16),'mobile form uses readable 16px text');
@@ -79,7 +77,7 @@ function check(ok,name){checks.push({ok,name});console.log((ok?'PASS ':'FAIL ')+
   // A separate desktop context checks the unchanged wide-screen layout and downloads.
   const desktopContext=await browser.newContext({viewport:{width:1440,height:1000},acceptDownloads:true,reducedMotion:'reduce'});await desktopContext.setOffline(true);
   const desktop=await desktopContext.newPage();desktop.on('pageerror',e=>errors.push(e.message));
-  await desktop.goto(pathToFileURL(path.join(ROOT,'index.html')).href);await desktop.waitForFunction(()=>PghExamMaker.ready);
+  await desktop.goto(pathToFileURL(path.join(ROOT,'exam-maker.html')).href);await desktop.waitForFunction(()=>PghExamMaker.ready);
   check(await desktop.locator('#mobileGenerate').isHidden(),'mobile bar stays hidden on desktop');
   check(await desktop.locator('.layout').evaluate(e=>getComputedStyle(e).gridTemplateColumns.split(' ').length===2),'desktop retains its two-column layout');
   await desktop.locator('#generate').click();await desktop.locator('#downloads').waitFor({state:'visible'});

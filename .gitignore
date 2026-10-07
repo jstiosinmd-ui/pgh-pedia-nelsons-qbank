@@ -1,8 +1,7 @@
 .tmp/
+Archive/
 node_modules/
 __pycache__/
 *.pyc
 .DS_Store
 Thumbs.db
-Archive/
-TRASH/

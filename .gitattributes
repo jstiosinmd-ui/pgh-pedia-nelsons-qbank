@@ -1,5 +1,8 @@
 * text=auto
 *.html -text whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+*.pdf binary
+*.png binary
+*.zip binary
 *.md text eol=lf
 *.cjs text eol=lf
-*.zip binary
+*.py text eol=lf

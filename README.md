@@ -1,55 +1,77 @@
-# PGH Pediatrics Exam Maker
+# PGH Pediatrics Exam Studio
 
----
+**Philippine General Hospital | v2.0 | October 7, 2026**
 
-Download the [offline package](20261006_PGH_NelsonsExamMaker_v1.1.zip), extract it, and open the HTML in a compatible browser. Alternatively, download this repository and open [index.html](index.html). GitHub's HTML source view does not run the app. The offline package contains the exam maker and its guide. It has no standalone question-bank page or link to one.
+Created by **Jon Bryan S. Tiosin, MD**. **(c) jstiosin 2026** appears on every HTML page and every generated PDF page, including blank answer sheets and compact keys.
 
-The self-contained examiner tool lets you choose the question count, sections or specific topics, difficulty, and exam details. It generates a question-paper PDF with a blank answer sheet and a matching answer-key PDF. The credit `/jstiosin 2026` appears in the HTML footer and on every generated PDF page.
+An offline, mobile-friendly workspace for assembling pediatric practice exams from the existing 6,700-question Nelson Textbook of Pediatrics, 21st-edition bank. This edition provides the exam maker without a standalone question-bank page.
 
-## Generate PDFs
+## Open the studio
 
-1. Set the exam title, number of questions, duration, date, and difficulty. Choose Easy, Average, Difficult, Mixed, or a custom percentage mix.
-2. Select sections or specific topics. The count must allow at least one question for every selected group.
-3. Choose whether the key should include rationales and references. Traditional single-best-answer questions are selected by default; the optional legacy Type K setting retains the 40% cap.
-4. Tap **Generate exam**. Review five questions at a time with Previous and Next.
-5. On mobile, tap **Prepare exam PDF** or **Prepare answer key PDF**, then tap the corresponding **Save or open** link. If the browser opens a PDF preview, use its Save or Share control. Desktop downloads start directly.
+Download the [complete offline package](20261007_PGH_PediatricsExamStudio_v2.0.zip), extract it, and open **[index.html](index.html)** in a browser that supports local HTML apps. Keep the extracted files together for navigation. GitHub's HTML source view does not run the application.
 
-The question-paper PDF includes a blank answer sheet. The answer-key PDF contains the matching answer grid and, when selected, explanations and references. Changing settings clears the old draw and its PDF links. Download PDFs and the optional exam record before closing the tab.
+- [index.html](index.html): the hospital-branded landing page.
+- [exam-maker.html](exam-maker.html): question count, topics, difficulty, and matching PDF exports.
+- [Sample exam with blank answer sheet](samples/exam.pdf): 12 pages.
+- [Sample answer key with explanations](samples/answer-key.pdf): 28 pages.
 
-## Examiner use
+Each application HTML embeds its own questions, scripts, styles, logo, PDF libraries, and fonts. No account, installation, server, or internet connection is needed to generate exams. A file previewer that does not execute JavaScript cannot operate the applications.
 
-Keep the HTML file and answer key with examiners. Distribute the generated question-paper PDF to examinees. The HTML still embeds the full question pool and answers so it can generate exams offline; removing the standalone study page does not make those embedded data private.
+## Generate an exam
 
-Questions, logos, scripts, PDF libraries, and fonts are contained in the file. No account, server, or internet connection is required when the browser supports local HTML apps. A file previewer that cannot run JavaScript cannot operate the tool.
+1. Open **Exam maker** from the landing page. Enter the exam title, date, duration, and number of questions.
+2. Select sections or specific topics. The question count must allow at least one question per selected group.
+3. Choose Easy, Average, Difficult, Mixed, or a custom difficulty mix. Traditional single-best-answer questions are selected by default. The optional legacy Type K setting retains the 40% cap.
+4. Choose whether to include rationales and references in the key, then select **Generate exam**. Review the draw five questions at a time.
+5. On desktop, download the question paper and answer key. On mobile, tap **Prepare exam PDF** or **Prepare answer key PDF**, then tap its **Save or open** link. If a preview opens, use the browser's Save or Share control.
 
-## Question coverage
+The paper and key use the same questions, order, and exam code. The paper includes a blank answer sheet. Changing settings clears the old draw and PDF links. Download the PDFs and optional JSON exam record before closing the tab; the current draw is not automatically saved. Record import is not implemented. Repeatable draws use the same seed and settings.
 
-The unchanged source pool contains 6,700 Nelson Textbook of Pediatrics, 21st-edition questions across 33 sections, including the corrected September 29, 2026 Respiratory System content. Section 34, Laboratory Medicine, is not included. Difficulty labels are editorial estimates. This interface revision does not perform a fresh clinical source review.
+On phones, **Setup**, **Topics**, and **Your exam** shortcuts reduce scrolling. The bottom action button changes from generating the exam to viewing PDFs and hides while entering text or numbers. Layouts, navigation, and touch targets adapt to narrow screens.
 
-## Design
+The HTML applications contain the complete question pool and answers. Keep the exam maker and answer key with examiners, and distribute the question-paper PDF to examinees. Standalone HTML cannot conceal embedded answer data.
 
-The saved UP-PGH Heritage palette supplies Maroon `#7B1113`, Forest Green `#014421`, Heritage Cream `#FDFAF3`, Warm Cream `#F0E7D2`, and small Gold `#FFB81C` accents. This is the workspace's established maroon-and-cream design system. The Philippine General Hospital (PGH) logo was retrieved from the [official PGH website](https://www.pgh.gov.ph/about-pgh/) on October 6, 2026. The HTML file embeds the original downloaded PNG, with no redrawing or recoloring. PDFs use A4 pages and embedded Calibri fonts. These saved palettes are operational design systems; the package does not claim that they are published official hospital brand manuals.
+## Content and design
+
+The unchanged bank contains 6,700 questions across 33 sections and 579 distinct topic labels. Traditional single-best-answer questions account for 5,190 items. Section 18 retains the corrected September 29, 2026 Respiratory System content. Section 34, Laboratory Medicine, is not included. Legacy identifiers, answer letters, rationales, and references are preserved.
+
+This release changes presentation, navigation, and attribution. It does not perform a fresh clinical source review. Difficulty labels are editorial estimates, not measured item difficulty. Use the existing bank for practice and mock assessments.
+
+The established PGH Heritage palette uses maroon, forest green, cream, and gold. The original PGH logo was retrieved from the [official PGH website](https://www.pgh.gov.ph/about-pgh/) on October 6, 2026 and is embedded without redrawing or recoloring. These are established workspace palettes, not a claim of published official hospital brand manuals. PDFs use A4 pages and embedded Calibri fonts.
+
+## Screenshots
+
+![Studio landing page](screenshots/landing-desktop.png)
+
+[View the mobile landing page](screenshots/landing-mobile.png).
 
 ## Verification
 
-The v1.1 application and offline ZIP are byte-identical to the tested local release. Each edition passed 62 checks covering mobile layouts, topic and difficulty selection, exam previews, offline PDF downloads, and the absence of standalone study navigation. The credit `/jstiosin 2026` and institutional header were checked on every page of the generated paper and key PDFs.
+Verified on October 7, 2026: **754 checks passed**.
 
-Chrome desktop and touch emulation were used at widths of 320, 360, 390, 430, 768, 932, and 1440 pixels. Physical phones and Safari were not tested. These checks validate software behavior; they do not constitute a fresh clinical source review.
+- **30 landing checks**: branding, embedded logo, credit, responsive layout, navigation, and edition-specific question-bank availability.
+- **60 mobile exam-maker checks**: widths of 320, 360, 390, 430, 768, and 932 px, touch controls, topic search, validation, preview pagination, and PDF save links.
+- **32 browser regression checks**: offline generation, direct PDF downloads, topic and difficulty allocation, repeatable draws, invalid settings, and stale-download prevention.
+- **632 PDF checks**: content and answer parity, references, A4 size, margins, fonts, page numbers, institutional headers, full author name, and exact copyright credit on every page.
 
-## Run the existing mobile checks
+All 41 pages of the sample paper, detailed key, and compact test key were rendered and visually inspected. Desktop and mobile landing screenshots were inspected. Additional mobile-download PDFs were checked for the full name and credit on every page. The sample uses 50 questions, seed `20261006`, and exam code `143YVH2`.
 
-With Node.js, Playwright, and Chromium installed, run:
+Testing used Chrome desktop and touch emulation with the network disabled. Physical phones and Safari were not tested. Large draws can take more time and memory on mobile devices. These checks validate software behavior and source-data preservation, not clinical correctness.
+
+With Node.js, Playwright, and its Chromium browser installed, run from this repository:
 
 ```sh
+node tests/landing.cjs
 node tests/mobile.cjs
+node tests/regression.cjs
 ```
 
-Optionally set `BROWSER_PATH` to an installed Chrome executable and `PLAYWRIGHT_MODULE` to an existing Playwright module. Results, screenshots, and test PDFs are written into the ignored `.tmp/exam-only-qa/` folder. Test tooling is not required to use the app.
+Optionally set `BROWSER_PATH` to an installed Chrome/Edge executable and `PLAYWRIGHT_MODULE` to an existing Playwright package. After the regression suite generates PDFs, run the PDF checks with Python, PyMuPDF, and Pillow:
 
-## Files
+```sh
+python tests/inspect_pdfs.py
+```
 
-- [index.html](index.html): self-contained exam maker.
-- [20261006_PGH_NelsonsExamMaker_v1.1.zip](20261006_PGH_NelsonsExamMaker_v1.1.zip): offline exam maker and guide.
-- [tests/mobile.cjs](tests/mobile.cjs): the existing 62-check browser suite.
+Test outputs go under ignored `.tmp/`; landing screenshots also refresh `screenshots/`. Test tooling is not needed to use the studio.
 
-PDF generation embeds pdf-lib and fontkit; their attribution is included inside the HTML. This repository grants no additional rights to third-party references, fonts, libraries, or institutional marks.
+PDF generation embeds [pdf-lib](https://pdf-lib.js.org/) and [fontkit](https://github.com/Hopding/fontkit), with their attribution retained in the HTML. This repository grants no additional rights to third-party references, fonts, software, or institutional marks.

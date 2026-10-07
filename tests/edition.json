@@ -1,0 +1,20 @@
+{
+  "key": "PGH",
+  "code": "PGH",
+  "short": "PGH",
+  "hospital": "Philippine General Hospital",
+  "namespace": "Pgh",
+  "study": false,
+  "brand": "pgh-heritage",
+  "primary": "#7B1113",
+  "secondary": "#014421",
+  "accent": "#FFB81C",
+  "paper": "#FDFAF3",
+  "wash": "#F0E7D2",
+  "line": "#DCCFB4",
+  "muted": "#6E6152",
+  "ink": "#1A1A1A",
+  "header": "UP-PGH / DEPARTMENT OF PEDIATRICS",
+  "platform": "PGH Pediatrics Exam Studio",
+  "zip": "20261007_PGH_PediatricsExamStudio_v2.0.zip"
+}
