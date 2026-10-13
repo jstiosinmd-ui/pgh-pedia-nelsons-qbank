@@ -1,64 +1,78 @@
 {
-  "version": "2.2",
+  "version": "2.3",
   "status": "complete",
-  "date": "2026-10-13",
-  "built": "2026-10-13T11:34:17.562281+00:00",
-  "imported": 1000,
-  "eligible": 1000,
-  "held": 0,
-  "revised": 53,
-  "unchanged_legacy_content": 947,
-  "difficulty_counts": {
-    "Easy": 121,
-    "Average": 870,
-    "Difficult": 9
-  },
+  "built": "2026-10-13T14:37:42.218246+00:00",
+  "based_on": "2.2",
+  "question_content_changed": false,
+  "nelson_questions": 6700,
+  "board_questions": 1000,
   "bank_hash": "56d30c443b196c2b1dfaa57f75d4c420bf4fbf739715606e6ed1d3ba40e81653",
-  "source_review_scope": 53,
-  "difficulty_is_editorial": true,
+  "nelson_practice_hash": "b871e29aef79951fe25215c808e10bb69fae143394f695b965c8960388737fe2",
   "validation_counts": {
-    "static": 80,
-    "browser": 225,
-    "pdf": 204,
-    "final": 17
+    "static_and_package": 102,
+    "browser": 380
   },
+  "browser_counts": {
+    "PGH": 80,
+    "StPauls": 80,
+    "CMC": 80,
+    "DLSMC": 79,
+    "navigation": 61
+  },
+  "revised_board_questions": 53,
+  "legacy_board_questions": 947,
   "edition": "PGH",
   "credit": "(c) jstiosin 2026",
   "author": "Jon Bryan S. Tiosin, MD",
-  "nelson_bank_unchanged": true,
-  "source_release_manifest": "20261013_PED_StudioManifest_v2.2.json",
-  "source_release_manifest_sha256": "003069b7d89801695d9fbb0fa76a4218786d7bbfd1a297a8e52868f53efa047c",
-  "validation_scope": "Counts are from the completed four-edition local release. Publishing verifies exact file and ZIP bytes, staged Git bytes, navigation, and creator credits.",
+  "source_release_manifest": "20261013_PED_StudioManifest_v2.3.json",
+  "source_release_manifest_sha256": "722670e8e27b13dc93926d52126e4f2a787702a56d2ceab1ccb3bee3a0a13f02",
+  "validation_scope": "Software, content preservation, and packaging. Counts cover all four local editions; no new clinical review or PDF audit.",
   "files": [
+    {
+      "path": "README.md",
+      "source_release_path": "PGH/README.md",
+      "size": 1765,
+      "sha256": "28c3ce9cfcf16378926e208502d4a64b32c1c1b3c96cbc969cdda6d3d32eb90e"
+    },
     {
       "path": "boards-mock.html",
       "source_release_path": "PGH/boards-mock.html",
-      "size": 3617187,
-      "sha256": "58d182db06f90d85ea8089764e52c80b628bd08bae4191cbdf22fd9689314fbf"
+      "size": 3617213,
+      "sha256": "5acfb0f6dfc593c0fcbbe452f4052b85a9b2ae2a6aac4cab5c4eca734309ca2a"
     },
     {
       "path": "exam-maker.html",
       "source_release_path": "PGH/exam-maker.html",
-      "size": 14734705,
-      "sha256": "3ba1cdd2adbd7b3560a117cc3757d47a8c447da54b15275a1f373899e6e6cce9"
+      "size": 14733453,
+      "sha256": "16196399f6c78acf6eb61c58595abbd76fce06df2330a4e714c12136c066ee36"
     },
     {
       "path": "index.html",
       "source_release_path": "PGH/index.html",
-      "size": 33180,
-      "sha256": "254f506418549b6d83a54d776bcee6a3ec488c27764dc84ebbfa36948e0bef99"
+      "size": 32877,
+      "sha256": "07de31a75865eaac099075eaf45a117e65d7c8b00cb871e130593210a6c79053"
     },
     {
-      "path": "README.md",
-      "source_release_path": "PGH/README.md",
-      "size": 1365,
-      "sha256": "bf701295a6a3df169286e4b07155b0d478aa6bdcefab95bf0c5aabe5c6b3ebf7"
+      "path": "question-bank.html",
+      "source_release_path": "PGH/question-bank.html",
+      "size": 12994578,
+      "sha256": "c38b21e73e1d7ad3f1449b2df973734160c73f5df19226d69f79b7b238e257cc"
     },
     {
-      "path": "20261013_PGH_PediatricsExamStudio_v2.2.zip",
-      "source_release_path": "20261013_PGH_PediatricsExamStudio_v2.2.zip",
-      "size": 3966200,
-      "sha256": "eb2e8f6b49b6f36e80314e25c7c68a3951a71ad5a9dd76054ece476786f58144"
+      "path": "20261013_PGH_PediatricsExamStudio_v2.3.zip",
+      "source_release_path": "20261013_PGH_PediatricsExamStudio_v2.3.zip",
+      "size": 6556010,
+      "sha256": "2edb613242c79d1f1aeb5dc55712d1eb3cf594d2e0aa1d2cdc2d79c62eb82154"
+    }
+  ],
+  "test_files": [
+    {
+      "path": "tests/edition.json",
+      "sha256": "0738f21ea6db616be9ac2c47269addbb1caa1c2daadf42e2f768a97d79d37473"
+    },
+    {
+      "path": "tests/practice.cjs",
+      "sha256": "a761fe23ecc99776c175745e75110919e6e570554814c87657e075efd6b3a9ad"
     }
   ]
 }

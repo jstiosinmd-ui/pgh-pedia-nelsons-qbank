@@ -4,7 +4,7 @@
   "short": "PGH",
   "hospital": "Philippine General Hospital",
   "namespace": "Pgh",
-  "study": false,
+  "study": true,
   "brand": "pgh-heritage",
   "primary": "#7B1113",
   "secondary": "#014421",
@@ -16,5 +16,5 @@
   "ink": "#1A1A1A",
   "header": "UP-PGH / DEPARTMENT OF PEDIATRICS",
   "platform": "PGH Pediatrics Exam Studio",
-  "zip": "20261007_PGH_PediatricsExamStudio_v2.0.zip"
+  "zip": "20261013_PGH_PediatricsExamStudio_v2.3.zip"
 }
