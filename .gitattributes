@@ -6,3 +6,5 @@
 *.md text eol=lf
 *.cjs text eol=lf
 *.py text eol=lf
+*.json -text
+README.md -text whitespace=cr-at-eol
