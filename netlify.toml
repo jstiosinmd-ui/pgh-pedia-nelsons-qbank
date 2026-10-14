@@ -1,0 +1,11 @@
+[build]
+  command = "node scripts/build-netlify.cjs"
+  publish = ".tmp/netlify-site"
+
+[build.processing.html]
+  pretty_urls = false
+
+[[headers]]
+  for = "/_studio/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
