@@ -47,6 +47,12 @@ server.listen(0,'127.0.0.1',()=>{
    await page.route(base+first,route=>route.fulfill({status:503,body:'unavailable'}));
    await page.reload();await page.locator('#deliveryRetry').waitFor({state:'visible'});
    check(await page.evaluate(()=>!globalThis.PracticeBank),'Persistent download failure cannot start partial practice');
+   await page.unroute(base+first);
+   await page.route(base+plan.scripts[0].parts[0],route=>route.fulfill({contentType:'application/json',body:JSON.stringify('corrupted script')}));
+   await page.reload();await page.locator('#deliveryRetry').waitFor({state:'visible'});
+   check(await page.evaluate(()=>!globalThis.PracticeBank),'Corrupted runtime cannot execute');
+   const referenced=[...plan.blocks,...plan.scripts].flatMap(b=>b.parts);
+   check(referenced.every(part=>fs.statSync(path.join(root,part)).size<160000),'All practice data and script pieces remain below 160 KB');
    console.log(JSON.stringify({hosting_checks:checks.length}));
   }catch(error){console.error(error);process.exitCode=1}
   finally{fs.writeFileSync(path.join(qa,'hosting-checks.json'),JSON.stringify({checks},null,2));await browser.close();server.close()}

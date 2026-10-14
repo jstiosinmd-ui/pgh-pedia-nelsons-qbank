@@ -7,7 +7,8 @@
   const progress = document.getElementById('deliveryProgress');
   const retry = document.getElementById('deliveryRetry');
   const bank = new URLSearchParams(location.search).get('bank') === 'mock' ? 'mock' : 'nelson';
-  const blocks = plan.blocks.filter(b => !b.bank || b.bank === bank);
+  const dataBlocks = plan.blocks.filter(b => !b.bank || b.bank === bank);
+  const blocks = [...dataBlocks, ...plan.scripts];
   const jobs = blocks.flatMap(b => b.parts.map((url, i) => ({block: b, index: i, url})));
   let next = 0, done = 0;
   const parts = new Map(blocks.map(b => [b.id, new Array(b.parts.length)]));
@@ -37,25 +38,22 @@
       message.textContent = 'Loading questions… ' + Math.round(done / jobs.length * 100) + '%';
     }
   }
-  async function loadScript(url) {
-    await new Promise((resolve, reject) => {
-      const script = document.createElement('script');
-      script.src = url;
-      script.onload = resolve;
-      script.onerror = () => reject(Error('Practice tools unavailable'));
-      document.body.appendChild(script);
-    });
-  }
   (async () => {
     await Promise.all(Array.from({length: Math.min(6, jobs.length)}, worker));
+    const verified = new Map();
     for (const block of blocks) {
       const text = parts.get(block.id).join('');
       const digest = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(text));
       const hash = Array.from(new Uint8Array(digest), n => n.toString(16).padStart(2, '0')).join('');
       if (hash !== block.sha256) throw Error('Question data incomplete');
-      document.getElementById(block.id).textContent = text;
+      verified.set(block.id, text);
     }
-    for (const url of plan.scripts) await loadScript(url);
+    for (const block of dataBlocks) document.getElementById(block.id).textContent = verified.get(block.id);
+    for (const block of plan.scripts) {
+      const script = document.createElement('script');
+      script.textContent = verified.get(block.id);
+      document.body.appendChild(script);
+    }
     panel.remove();
     document.documentElement.removeAttribute('data-delivery-loading');
   })().catch(() => {
